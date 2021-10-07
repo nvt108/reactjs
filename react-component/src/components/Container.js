@@ -22,7 +22,7 @@ export default class Container extends React.Component{
     }
 
     render(){
-        return (git
+        return (
             <div className="container">
                 <h1>This is {this.state.title} Component</h1>
                 <h3>{this.state.detail}</h3>
