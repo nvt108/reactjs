@@ -1,0 +1,23 @@
+.App {
+  text-align: center;
+  width: 80%;
+  margin: 10px auto;
+}
+.container{
+  width: 300px;
+  margin: 0 auto;
+  text-align: left;
+}
+table{
+  border-collapse: collapse;
+  width: 100%;
+}
+table .name{
+  text-align: left;
+}
+table td, table th{
+  padding: 2px 4px;
+}
+button{
+  margin-top: 8px;
+}
