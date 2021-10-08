@@ -2,9 +2,10 @@ import './App.css';
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {addBook, deleteBook, editBook} from "./actions/book";
-import ListBook from './ListBook'
+import ListBook from './ListBook';
+import FilterBooks from './FilterBooks';
 
-class App extends Component {
+export class App extends Component {
     constructor(props, context) {
         super(props, context);
         this.handleChange = this.handleChange.bind(this);
@@ -29,16 +30,18 @@ class App extends Component {
 
     render() {
         const books = this.props.books;
+        if (!books)
+            return (<p>Loading data</p>);
         return (
             <div className="App">
                 <div className="container">
                     <h1>Book Manager</h1>
                     <table border="1" className='table-form'>
-                        <head>
+                        <thead>
                             <th>ID</th>
                             <th>Book Name</th>
                             <th>Delete</th>
-                        </head>
+                        </thead>
                         <tbody>
                         {
                             books.map((book, key) => {
@@ -58,6 +61,7 @@ class App extends Component {
 
                     <div className="list-book">
                         <ListBook books={this.props.books}/>
+                        <FilterBooks />
                     </div>
                 </div>
             </div>
@@ -70,4 +74,4 @@ const mapStatesToProps = (state) => {
         books: state.book
     }
 };
-export default connect(mapStatesToProps, null)(App);
+export default connect(mapStatesToProps)(App);

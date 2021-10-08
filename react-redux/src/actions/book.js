@@ -8,7 +8,7 @@ export const editBook = (bookId, event) => {
         type: "EDIT",
         data:{
             name: event.target.value,
-            bookId: bookId
+            bookId: bookId,
         }
     };
 };

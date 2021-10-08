@@ -3,12 +3,9 @@ import React, { Component } from 'react'
 class Header extends Component{
     constructor(props){
         super(props)
-        this.state = {}
+        this.state = {detail: 'This is Class component'}
     }
 
-    componentWillMount(){
-        this.setState({detail: 'This is Class component'});
-    }
     render(){
         return (
             <div className="header">

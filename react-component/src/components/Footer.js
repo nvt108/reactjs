@@ -5,7 +5,6 @@ const Footer = () =>{
     const [detail, setDetail] = useState({type: '', use: ''});
 
     useEffect(() => {
-        console.log("Effct run");
         setDetail({type: 'Function ES6 Component',use: 'useEffect'})
     },[detail.type]);
 

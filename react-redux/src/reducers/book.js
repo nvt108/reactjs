@@ -1,7 +1,7 @@
 const initBook =[
-    {id: 1, name: 'I love you so'},
-    {id: 2, name: 'My dad love me'},
-    {id: 3, name: 'You!!'},
+    {id: 1, name: 'I love you so', status: 1},
+    {id: 2, name: 'My dad love me', status: 1},
+    {id: 3, name: 'You!!', status: 0},
 ];
 var nexBookId = initBook.length;
 const renderBookId = (books, bookId)  => {
@@ -15,16 +15,17 @@ const renderBookId = (books, bookId)  => {
 };
 export const bookReducer = (state = initBook, action) => {
     let books = state.slice();
+
     switch (action.type) {
         case "ADD":
             nexBookId++;
-            books.push({id: nexBookId, name: ''});
-            console.log(books);
+            books.push({id: nexBookId, name: '',status: 0});
             break;
         case "EDIT":
             var bookId = renderBookId(books,action.data.bookId);
             if(bookId != -1)  {
                 books[bookId].name = action.data.name;
+                books[bookId].status = action.data.status;
             }
             break;
         case "DELETE":

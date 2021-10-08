@@ -28,14 +28,14 @@ export default class Container extends React.Component{
                 <h3>{this.state.detail}</h3>
                 <button onClick={() => this.setState({detail: 'This is new detail page'})}>Change Detail</button>
                 <button onClick={this.addNewBook}>Add New Book</button>
-                <di>
+                <div>
                     <h3>List Book ({this.state.books.length})</h3>
                     {
                         this.state.books.map((book, key) =>{
                             return <li key={key}> ID: {book.id}, Name: {book.name}</li>
                         })
                     }
-                </di>
+                </div>
             </div>
         )
     }
