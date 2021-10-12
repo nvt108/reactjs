@@ -13,7 +13,7 @@ const getIndexOfBook = (books, bookId)  => {
     }
     return -1;
 };
-export const bookReducer = (state = initBook, action) => {
+export const book = (state = initBook, action) => {
     let books = state.slice();
 
     switch (action.type) {
@@ -24,14 +24,14 @@ export const bookReducer = (state = initBook, action) => {
         case "EDIT":
             var index = getIndexOfBook(books,action.data.bookId);
             if(index != -1)  {
-                books[bookId].name = action.data.name;
-                books[bookId].status = action.data.status;
+                books[index].name = action.data.name;
+                books[index].status = action.data.status;
             }
             break;
         case "DELETE":
             var index = getIndexOfBook(books,action.bookId);
             if(index != -1){
-                books.splice(bookId,1)
+                books.splice(index,1)
             }
             break;
         case "LIST":
@@ -40,5 +40,4 @@ export const bookReducer = (state = initBook, action) => {
     }
     return books;
 };
-
-export default bookReducer;
+export default book;
