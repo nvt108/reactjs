@@ -23,15 +23,15 @@ export const bookReducer = (state = initBook, action) => {
             break;
         case "EDIT":
             var index = getIndexOfBook(books,action.data.bookId);
-            if(index != -1)  {
-                books[bookId].name = action.data.name;
-                books[bookId].status = action.data.status;
+            if(index !== -1)  {
+                books[index].name = action.data.name;
+                books[index].status = action.data.status;
             }
             break;
         case "DELETE":
             var index = getIndexOfBook(books,action.bookId);
-            if(index != -1){
-                books.splice(bookId,1)
+            if(index !== -1){
+                books.splice(index,1)
             }
             break;
         case "LIST":

@@ -60,7 +60,7 @@ export class App extends Component {
                     <button onClick={this.addBook}>Add New</button>
 
                     <div className="list-book">
-                        <ListBook books={this.props.books}/>
+                        <ListBook/>
                         <FilterBooks />
                     </div>
                 </div>
