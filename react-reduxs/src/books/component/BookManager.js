@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {addBook, deleteBook, editBook} from "../action";
+import {addBook, deleteBook, editBook, listBook} from "../action";
 import ListBook from './ListBook';
 import {getBooks} from "../../books/selector";
 
@@ -8,6 +8,9 @@ import {getBooks} from "../../books/selector";
 export class BookManager extends Component {
     constructor(props, context) {
         super(props, context);
+    }
+    componentDidMount(){
+        this.props.listBook();
     }
     render() {
         const books = this.props.books;
@@ -60,6 +63,7 @@ const mapDispatchToProps = (dispatch) =>{
         addBook: () => dispatch(addBook()),
         editBook: (id, event) => dispatch(editBook(id,event)),
         deleteBook: (id) => dispatch(deleteBook(id)),
+        listBook: () => dispatch(listBook())
     }
 };
 export default connect(mapStatesToProps,mapDispatchToProps)(BookManager);

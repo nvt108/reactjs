@@ -1,3 +1,4 @@
+// import fetch from "node-fetch";
 export const addBook = () => {
     return {
         type: "ADD",
@@ -21,7 +22,24 @@ export const deleteBook = (bookId) => {
 };
 
 export const listBook = () =>{
+    return dispatch => {
+        fetch("http://localhost:5000/api/users/list").then(res => res.json()).then(
+            (result) => { dispatch(fetchBooks(result))},
+            (error) => { dispatch(handlerError(error)) }
+        );
+    }
+};
+
+export const handlerError = (error) => {
     return {
-        type: 'LIST'
+        type: 'API_ERROR',
+        message: error
+    }
+}
+
+const fetchBooks = (books) => {
+    return {
+        type: 'LIST',
+        books: books
     }
 };

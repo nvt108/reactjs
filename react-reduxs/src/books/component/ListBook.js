@@ -8,6 +8,8 @@ class ListBook extends React.Component{
     }
     render(){
         let books = this.props.books;
+        if (!books)
+            return (<p>Loading data</p>);
         return (
             <div className="my-listbook">
                 <h3>Alls Book</h3>

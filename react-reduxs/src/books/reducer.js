@@ -1,5 +1,5 @@
+const saleOff = 10;
 const initState = {
-    saleOff: 10, // 10/%
     books: [
         {id: 1, name: 'I love you so', price: 10},
         {id: 2, name: 'My dad love me', price: 9},
@@ -9,6 +9,7 @@ const initState = {
 
 
 const getIndexOfBook = (books, bookId)  => {
+    if(!books.length) return -1;
     for(var i = 0; i < books.length; i++) {
         var book = books[i];
         if(book.id === bookId) {
@@ -18,8 +19,12 @@ const getIndexOfBook = (books, bookId)  => {
     return -1;
 };
 export const book = (state = initState, action) => {
-    let books = state.books.slice();
-    var nexBookId = state.books.length;
+    let books = [];
+    let nexBookId = 0;
+    if('books' in state && state.books.length){
+        books = state.books.slice();
+        nexBookId = state.books.length;
+    }
     switch (action.type) {
         case "ADD":
             nexBookId++;
@@ -39,9 +44,11 @@ export const book = (state = initState, action) => {
             }
             break;
         case "LIST":
+            books = action.books;
+            break;
         default:
             break;
     }
-    return {books: books, saleOff: initState.saleOff};
+    return {books: books, saleOff: saleOff};
 };
 export default book;
