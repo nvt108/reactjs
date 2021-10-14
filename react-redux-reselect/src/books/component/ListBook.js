@@ -1,30 +1,45 @@
-import { useSelector, useDispatch } from 'react-redux'
 import React from 'react';
-const ListBook = () => {
-    const books = useSelector((state) => state.book);
-    return (
-        <div>
-            <h3>Alls Book</h3>
-            <table border="1" className='table-list'>
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Book Name</th>
-                </tr>
-                </thead>
-                <tbody>
-                {
-                    books.map((book, key) => {
-                        return (<tr key={key}>
-                            <td>{book.id}</td>
-                            <td className="name">{book.name}</td>
-                        </tr>)
-                    })
-                }
-                </tbody>
-            </table>
-        </div>
+import {connect} from 'react-redux';
+import { getBooks } from '../selector';
 
-    )
+class ListBook extends React.Component{
+    constructor(props){
+        super(props);
+    }
+    render(){
+        let books = this.props.books;
+        return (
+            <div className="my-listbook">
+                <h3>Alls Book</h3>
+                <table border="1" className='table-list'>
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Book Name</th>
+                        <th>Price</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {
+                        books.map((book, key) => {
+                            return (<tr key={key}>
+                                <td>{book.id}</td>
+                                <td className="name">{book.name}</td>
+                                    <td className="name">{book.salePrice}</td>
+                            </tr>)
+                        })
+                    }
+                    </tbody>
+                </table>
+            </div>
+
+        )
+    }
 }
-export default ListBook;
+const mapStateToProps = (state) =>{
+    return {
+        books: getBooks(state),
+    }
+};
+
+export default connect(mapStateToProps)(ListBook);

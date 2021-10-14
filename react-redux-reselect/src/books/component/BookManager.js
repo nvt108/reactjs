@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {addBook, deleteBook, editBook} from "../action";
 import ListBook from './ListBook';
+import {getBooks} from "../../books/selector";
 
 
 export class BookManager extends Component {
@@ -18,11 +19,11 @@ export class BookManager extends Component {
                     <h1>Book Manager</h1>
                     <table border="1" className='table-form'>
                         <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Book Name</th>
-                                <th>Delete</th>
-                            </tr>
+                        <tr>
+                            <th>ID</th>
+                            <th>Book Name</th>
+                            <th>Delete</th>
+                        </tr>
                         </thead>
                         <tbody>
                         {
@@ -41,7 +42,7 @@ export class BookManager extends Component {
                     </table>
                     <button onClick={this.props.addBook}>Add New</button>
                     <div className="list-book">
-                        <ListBook books={this.props.books}/>
+                        <ListBook/>
                     </div>
                 </div>
             </div>
@@ -51,7 +52,7 @@ export class BookManager extends Component {
 
 const mapStatesToProps = (state) => {
     return {
-        books: state.book
+        books: getBooks(state)
     }
 };
 const mapDispatchToProps = (dispatch) =>{

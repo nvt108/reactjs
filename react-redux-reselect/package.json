@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --mode=development --open",
-    "prod": "webpack --mode=production"
+    "prod": "webpack --mode=production",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -13,12 +14,25 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.2",
     "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-redux": "^7.2.5",
+    "react-scripts": "^4.0.3",
     "redux": "^4.1.1"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-react": "^7.14.5",
+    "@testing-library/react": "^12.1.2",
+    "babel-jest": "^27.2.5",
+    "chai": "^4.3.4",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
     "html-webpack-plugin": "^5.3.2",
-    "react-scripts": "^4.0.3",
+    "jest": "^27.2.5",
+    "jest-cli": "^27.2.5",
+    "jsdom": "18.0.0",
+    "jsdom-global": "3.0.2",
+    "regenerator-runtime": "^0.13.9",
     "sass": "^1.42.1",
     "sass-loader": "^12.1.0",
     "webpack": "^5.58.1",
@@ -29,6 +43,14 @@
     "presets": [
       "@babel/preset-env",
       "@babel/preset-react"
+    ]
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.js$": "./node_modules/babel-jest"
+    },
+    "setupFiles": [
+      "./tests/setupTests.js"
     ]
   }
 }

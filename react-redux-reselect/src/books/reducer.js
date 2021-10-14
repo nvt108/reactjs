@@ -1,9 +1,13 @@
-const initBook =[
-    {id: 1, name: 'I love you so', status: 1},
-    {id: 2, name: 'My dad love me', status: 1},
-    {id: 3, name: 'You!!', status: 0},
-];
-var nexBookId = initBook.length;
+const initState = {
+    saleOff: 10, // 10/%
+    books: [
+        {id: 1, name: 'I love you so', price: 10},
+        {id: 2, name: 'My dad love me', price: 9},
+        {id: 3, name: 'You!!', price: 13},
+    ]
+};
+
+
 const getIndexOfBook = (books, bookId)  => {
     for(var i = 0; i < books.length; i++) {
         var book = books[i];
@@ -13,13 +17,13 @@ const getIndexOfBook = (books, bookId)  => {
     }
     return -1;
 };
-export const book = (state = initBook, action) => {
-    let books = state.slice();
-
+export const book = (state = initState, action) => {
+    let books = state.books.slice();
+    var nexBookId = state.books.length;
     switch (action.type) {
         case "ADD":
             nexBookId++;
-            books.push({id: nexBookId, name: '',status: 0});
+            books.push({id: nexBookId, name: ''});
             break;
         case "EDIT":
             var index = getIndexOfBook(books,action.data.bookId);
@@ -38,6 +42,6 @@ export const book = (state = initBook, action) => {
         default:
             break;
     }
-    return books;
+    return {books: books, saleOff: initState.saleOff};
 };
 export default book;
