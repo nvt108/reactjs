@@ -6,6 +6,7 @@ const bookSaleOffSelector = state => state.book.saleOff;
 export const getBooks = createSelector(
     [bookItemSelector, bookSaleOffSelector],
     (books, saleOff) =>{
+        if(undefined === books || !books.length) return [];
         return books.reduce(function (accumulator, currentBook) {
             currentBook.salePrice = 0;
             if(currentBook.price !== undefined){

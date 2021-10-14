@@ -21,7 +21,7 @@ app.get('/api/users/list', async (req, res) => {
         let users = JSON.parse(rawdata);
         res.setHeader('Content-Type', 'application/json');
         res.send(users);
-    },3000);
+    },2000);
 
 });
 

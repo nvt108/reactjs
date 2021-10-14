@@ -14,7 +14,7 @@ export class BookManager extends Component {
     }
     render() {
         const books = this.props.books;
-        if (!books)
+        if (!books.length)
             return (<p>Loading data</p>);
         return (
             <div className="App">

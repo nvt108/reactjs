@@ -1,9 +1,9 @@
 const saleOff = 10;
 const initState = {
     books: [
-        {id: 1, name: 'I love you so', price: 10},
-        {id: 2, name: 'My dad love me', price: 9},
-        {id: 3, name: 'You!!', price: 13},
+        // {id: 1, name: 'I love you so', price: 10},
+        // {id: 2, name: 'My dad love me', price: 9},
+        // {id: 3, name: 'You!!', price: 13},
     ]
 };
 
